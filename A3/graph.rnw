@@ -1,0 +1,30 @@
+\documentclass{article}
+
+\begin{document}
+
+\title{Nathaniel hopp 260527434}
+\begin{section}{Q1.c}
+<<>>=
+  blocking<-c(7124,7078,6897,7005,6864)
+  lockfree<-c(6669,6551,5966,6932,7060)
+  plot(c(32,16,8,4,2),blocking,type='b',ylab = "Time milliseconds", 
+       xlab = "Number of Threads", xlim = c(1,35),ylim = c(5900,7500),cex = .8,pch=21)
+  points(c(32,16,8,4,2),lockfree, type = 'b',col = "RED",pch=21)
+  title('Time Taken for p Threads (n=500)')
+  legend(25,6400, legend = c("Blocking", "Lock Free"),
+         col = c("black","red"),pch = .3)
+  @
+  I found that the lock free queue sometimes performed worse, better, and essentially identically to the blocking queue. It varied quite a lot even when averaging over ten runs. 
+\end{section}
+
+\begin{section}{q2.c}
+<<>>=
+  timeTaken<-c(2816,1921,1765,1819)
+  plot(c(2,4,6,8),timeTaken,type='b',ylab = "Time milliseconds", 
+       xlab = "Number of Threads t", xlim = c(1,9),ylim = c(1000,3000),cex = .8,pch=21)
+  title("Time Taken for t Threads")
+  @
+  Can see we start to get diminishing gains from adding more threads. This reduction is most likely due to overhead of starting and joining threads over and over again.
+\end{section}
+
+\end{document}
